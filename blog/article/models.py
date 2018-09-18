@@ -12,7 +12,7 @@ class Article(models.Model):
     # author = models.ForeignKey(User, related_name="article")  # 多对一的关系
     title = models.CharField(max_length=200)
     body = models.TextField()
-    created = models.DateTimeField(default=timezone.now())
+    created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:  # 内部类，python中的内部类的作用：让实例公用同一个属性值。该处的作用类似，即每个实例都具有的行为或属性

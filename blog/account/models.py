@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.utils import timezone   # settings中的TIME_ZONE要改为'Asia/Shanghai'
 
 # Create your models here.
 
@@ -26,7 +25,7 @@ class User(AbstractUser):
     avatar = models.CharField(max_length=50, default=None, null=True, blank=True, verbose_name='用户头像')
     sex = models.IntegerField(choices=SEX_CHOICES, default=0, verbose_name='性别')
     mobile = models.CharField(max_length=20, default=None, null=True, blank=True, verbose_name='用户手机号')
-    created = models.DateTimeField(default=timezone.now())
+    created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):

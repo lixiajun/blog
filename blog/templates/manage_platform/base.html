@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="ThemeBucket">
+  {% block head-title %}
+      <title>Base Page</title>
+  {% endblock %}
   <link rel="shortcut icon" href="#" type="image/png">
-
-  <title>Blank Page</title>
 
   <link href="{% static 'manage_platform/css/style.css' %}" rel="stylesheet">
   <link href="{% static 'manage_platform/css/style-responsive.css' %}" rel="stylesheet">
@@ -19,7 +20,7 @@
   <script src="js/respond.min.js"></script>
   <![endif]-->
 
-  {% block head %}
+  {% block head-tail %}
   {% endblock %}
 </head>
 

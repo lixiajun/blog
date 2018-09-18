@@ -1,5 +1,8 @@
 {% extends "manage_platform/base.html" %}
 {% load staticfiles %}
+{% block head-title %}
+    <title>List Users</title>
+{% endblock %}
 {% block page-heading %}
 <div class="page-heading">
     <h3>
@@ -60,7 +63,10 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ user.username }}</td>
                     <td>{{ user.created }}</td>
-                    <td>{% if user.sex %} {{ user.sex }}{% else %} 未填写 {% endif %}</td>
+                    <td>{% if user.sex and user.sex == 1 %} 男
+                        {% elif user.sex and user.sex == 2 %} 女
+                        {% else %} 未知
+                        {% endif %}</td>
 {#                    <td><a class="edit" href="{% url 'article:edit-article' article.id %}">Edit</a></td>#}
                     <td><a class="delete" href="{% url 'account:del-user' user.id %}">Delete</a></td>
                 </tr>
