@@ -1,0 +1,27 @@
+{% extends "article/show_article/base.html" %}
+{% load staticfiles %}
+{% block head %}
+        <title>Articles</title>
+{% endblock %}
+{% block body %}
+    <div class="col-md-8 blog-main">
+                    <div class="row">
+                        {% for article in articles %}
+                        <div class="col-md-6 col-sm-6">
+                            <article class=" blog-teaser">
+                                <header>
+                                    <img src="{% static 'article/img/1.jpg' %}" alt="">
+                                    <h3><a href="{% url 'article:article-detail' article.id %}">{{ article.title }}</a></h3>
+                                    <span class="meta">{{ article.updated }}</span>
+                                    <hr>
+                                </header>
+                            </article>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="paging">
+                        <a href="#" class="older">Older Post</i></a>
+                    </div>
+                </div>
+{% endblock %}

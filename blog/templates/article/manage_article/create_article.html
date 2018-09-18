@@ -1,0 +1,82 @@
+{% extends "manage_platform/base.html" %}
+{% load staticfiles %}
+{% block page-heading %}
+<div class="page-heading">
+    <h3>
+        文章管理
+    </h3>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Article</a>
+        </li>
+        {% if article %}
+            <li class="active"> Article Edit </li>
+        {% else %}
+            <li class="active"> Article Create </li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
+{% block wrapper %}
+    <div >
+        {% if article.id %}
+            标题: <input type="text" name="title" id="article-title" value="{{ article.title }}"/>
+        {% else %}
+            标题: <input type="text" name="title" id="article-title" />
+        {% endif %}
+    </div>
+    <p></p>
+    <div id="article-content" style="background-color:white">
+        {% if article.id %}
+            <p>{{ article.body | safe }}</p>
+        {% else %}
+            <p>请输入内容</p>
+        {% endif %}
+    </div>
+    <p></p>
+    <div>
+        {% if article.id %}
+            <button id="btn1">编辑完成</button>
+        {% else %}
+            <button id="btn1">创建完成</button>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{% static 'bootstrap/js/jquery-3.3.1/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wangEditor-3.1.1/release/wangEditor.js' %}"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor;
+        var editor = new E('#article-content');
+        editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+        editor.create();
+        document.getElementById('btn1').addEventListener('click', function () {
+            // 读取 html
+            var title = $("#article-title").val();
+            var content = editor.txt.html();
+            $.ajax({  //将数据上传
+                {% if article.id %}
+                    url:"{% url 'article:edit-article' article.id %}",
+                    data:{"title": title,
+                          "body": content,
+                          "id": {{ article.id }} },
+                {% else %}
+                    url:"{% url 'article:create-article' %}",
+                    data:{"title": title,
+                          "body": content,},
+                {% endif %}
+                type:"POST",
+                async: false,
+                success: function (e) {
+                    if (e.error_code == 0){
+                        alert('操作成功');
+                        console.log('11111111');
+                    }
+                },
+            });
+           window.location.href="{% url 'article:list-articles' %}";
+        },false)
+</script>
+{% endblock %}
+
