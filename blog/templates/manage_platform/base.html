@@ -283,7 +283,7 @@
                                 <a href="">
                                     <span class="thumb"><img src="{% static 'manage_platform/images/photos/user1.png' %}" alt="" /></span
                                         <span class="desc">
-                                          <span class="name">John Doe <span class="badge badge-success">new</span></span>
+                                          <span class="name">{{ user.username }}<span class="badge badge-success">new</span></span>
                                           <span class="msg">Lorem ipsum dolor sit amet...</span>
                                         </span>
                                 </a>
@@ -371,13 +371,13 @@
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <img src="{% static 'manage_platform/images/photos/user-avatar.png' %}" alt="" />
-                        John Doe
+                        {{ user.username }}
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
                         <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
                         <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                        <li><a href="{% url 'account:logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                     </ul>
                 </li>
 

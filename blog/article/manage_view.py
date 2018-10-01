@@ -6,8 +6,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from common.utils.little_func import list_menu  # 帮助manage_platform左侧显示正在访问的menu
 # Create your views here.
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/account/login/')
 @csrf_exempt
 def create_article(request):
     if request.method == "GET":
@@ -25,6 +27,7 @@ def create_article(request):
         return JsonResponse({'error_code': 0})
 
 
+@login_required(login_url='/account/login/')
 @csrf_exempt
 def edit_article(request, article_id):
     article = Article.objects.get(id=article_id)
@@ -43,12 +46,14 @@ def edit_article(request, article_id):
         return JsonResponse({'error_code': 0})
 
 
+@login_required(login_url='/account/login/')
 def list_articles(request):
     all_articles = Article.objects.all()
     article_menu = list_menu('manage')
     return render(request, "article/manage_article/article_list.html", {'articles': all_articles, 'article_menu': article_menu})
 
 
+@login_required(login_url='/account/login/')
 def del_article(request, article_id):
     article = Article.objects.get(id=article_id)
     article.delete()

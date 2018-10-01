@@ -7,21 +7,29 @@
     <div class="col-md-8 blog-main">
                     <div class="row">
                         {% for article in articles %}
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-12 col-sm-12">
                             <article class=" blog-teaser">
                                 <header>
                                     <img src="{% static 'article/img/1.jpg' %}" alt="">
                                     <h3><a href="{% url 'article:article-detail' article.id %}">{{ article.title }}</a></h3>
                                     <span class="meta">{{ article.updated }}</span>
-                                    <hr>
+                                     <hr>
+
                                 </header>
                             </article>
                         </div>
                         {% endfor %}
                     </div>
-
-                    <div class="paging">
-                        <a href="#" class="older">Older Post</i></a>
+                    <div class="pagination_custom" style="margin:0 auto;text-align: center ">
+                        <ul class="pagination">
+                            <li><a href="#">Last</a></li>
+                            <li><a href="#">«</a></li>
+                            <li><a class="active" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">...</a></li>
+                            <li><a href="#">»</a></li>
+                            <li><a href="#">Next</a></li>
+                        </ul>
                     </div>
                 </div>
 {% endblock %}
