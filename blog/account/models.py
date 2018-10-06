@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 
 # Create your models here.
 
@@ -30,3 +30,10 @@ class User(AbstractUser):
 
     def __unicode__(self):
         return self.username
+
+
+class UserPermission(models.Model):  # 创建完以后，就会在 auth_permission里面有记录
+    class Meta:
+        permissions = (
+            ('user_manage', u'用户管理'),
+        )
