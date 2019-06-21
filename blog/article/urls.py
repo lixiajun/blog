@@ -3,7 +3,7 @@ from django.conf.urls import url
 from . import show_view, manage_view
 
 urlpatterns = [
-    url(r'^$', show_view.index, name='article-index'),
+    url(r'^articles$', show_view.list_articles, name='article-index'),
     url(r'^article-detail/(?P<article_id>\d+)/$', show_view.article_detail, name='article-detail'),
 
     # 文章管理

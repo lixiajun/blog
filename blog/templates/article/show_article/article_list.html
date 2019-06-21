@@ -22,13 +22,17 @@
                     </div>
                     <div class="pagination_custom" style="margin:0 auto;text-align: center ">
                         <ul class="pagination">
-                            <li><a href="#">Last</a></li>
-                            <li><a href="#">«</a></li>
-                            <li><a class="active" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">...</a></li>
-                            <li><a href="#">»</a></li>
-                            <li><a href="#">Next</a></li>
+                            {% if page.has_previous %}
+                              <li><a href="?page_n={{ page.previous_page_number }}"><<</a></li>
+                            {% else %}
+                              <li><a href="#"><<</a></li>
+                            {% endif %}
+                            <li><a class="active" href="?page_n={{ page.number }}">{{ page.number }}</a></li>
+                            {% if page.has_next %}
+                              <li><a href="?page_n={{ page.next_page_number }}">>></a></li>
+                            {% else %}
+                              <li><a href="#">>></a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
