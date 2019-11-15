@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone   # settings中的TIME_ZONE要改为'Asia/Shanghai'
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 # Create your models here.
 
 
