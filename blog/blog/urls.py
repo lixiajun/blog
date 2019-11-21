@@ -22,7 +22,7 @@ urlpatterns = [
     #url(r'^$', TemplateView.as_view(template_name="manage_platform/index.html"), name='first_index'),
     url(r'^$', list_articles, name='index'),
     url(r'^admin/', admin.site.urls),
-    url(r'^blog/', include('article.urls', namespace='article', app_name='article')),
-    url(r'^account/', include('account.urls', namespace='account', app_name='account')),
+    url(r'^blog/', include('article.urls', namespace='article')),
+    url(r'^account/', include('account.urls', namespace='account')),
 
 ]

@@ -4,3 +4,7 @@
 /blog/.idea
 /blog/account/migrations
 /blog/article/migrations
+*/__pycache__/
+/blog/account/__pycache__/
+blog/article/__pycache__/
+blog/blog/__pycache__/

@@ -1,7 +1,7 @@
 # coding=utf-8
 from django.shortcuts import render
 from django.http import JsonResponse
-from models import Article
+from .models import Article
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
@@ -23,8 +23,8 @@ def list_articles(request):
         current_page = paginator.page(paginator.num_pages)
         articles = current_page.object_list
 
-    print current_page.has_next()
-    print current_page.number
+    print(current_page.has_next())
+    print(current_page.number)
     return render(request, "article/show_article/article_list.html", {'articles': articles, 'page': current_page})
 
 

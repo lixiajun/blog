@@ -2,6 +2,7 @@
 from django.conf.urls import url
 from . import show_view, manage_view
 
+app_name = "article"
 urlpatterns = [
     url(r'^articles$', show_view.list_articles, name='article-index'),
     url(r'^article-detail/(?P<article_id>\d+)/$', show_view.article_detail, name='article-detail'),

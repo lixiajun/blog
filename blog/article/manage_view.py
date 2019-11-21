@@ -31,7 +31,7 @@ def create_article(request):
 @csrf_exempt
 def edit_article(request, article_id):
     article = Article.objects.get(id=article_id)
-    print article_id
+    print(article_id)
     if request.method == "GET":
         article_menu = list_menu('manage')
         return render(request, "article/manage_article/create_article.html", {"article": article, "article_menu": article_menu})

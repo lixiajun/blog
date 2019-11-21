@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import manage_view
 from django.views.generic import TemplateView
 
+app_name = "account"  # 每一个app要有一个app_name
 urlpatterns = [
     url(r'^$', manage_view.list_users, name='list-users'),
     url(r'^login/$', manage_view.account_login, name='login'),

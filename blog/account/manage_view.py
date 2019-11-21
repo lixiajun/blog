@@ -54,10 +54,10 @@ def account_login(request):
             user = authenticate(username=user_name, password=user_passwd)
             if user:
                 login(request, user)
-                print '{} login'.format(user.username)
-                return HttpResponseRedirect(reverse('first_index'))
+                print('{} login'.format(user.username))
+                return HttpResponseRedirect(reverse('index'))
             else:
-                print '{} login failed'.format(user_name)
+                print('{} login failed'.format(user_name))
                 return render(request, "account/manage_user/login.html")
         else:
             return render(request, "account/manage_user/login.html")
@@ -126,7 +126,7 @@ def group_add_perm(request):
 def group_add_user(request):
     group_name = request.POST.get('group_name', '')
     user_name = request.POST.get('user_name', '')
-    print group_name,user_name
+    print(group_name,user_name)
     user = User.objects.get(username=user_name)
     group = Group.objects.get(name=group_name)
     user.groups.add(group)
